@@ -1,19 +1,25 @@
 type TodoProps = {
   syssla: string;
   rum: string;
-  färdig: boolean;
+  isDone: boolean;
 };
 
-const TodoItem = ({ syssla, rum, färdig }: TodoProps) => {
-  return (
+const TodoItem = ({ syssla, rum, isDone }: TodoProps) => {
+
+    if (isDone) {
+      <div className="TodoItem"> {syssla} ✅</div>;
+    } else {
+      <div className="TodoItem"> {syssla} </div>;
+    }
+
+    return (
     <div className="TodoItem">
+      {isDone ? <p> ✅</p> : <p>❌</p>}
+       
       <p>Syssla: {syssla}</p>
       <p>Rum: {rum}</p>
-      <p className={färdig ? 'StatusFärdig' : 'StatusInteFärdig'}>
-        Status: {färdig ? 'Färdig' : 'Inte färdig'}
-      </p>
     </div>
-  );
+    )
 };
 
 export default TodoItem;
